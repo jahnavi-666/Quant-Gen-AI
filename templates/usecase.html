@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUANT - Use Cases</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0a0e19;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #ffffff;
+        }
+
+        .contact-btn {
+            background-color: transparent;
+            border: 1px solid #505050;
+            border-radius: 50px;
+            padding: 8px 24px;
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .contact-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: linear-gradient(rgba(10, 14, 25, 0.5), rgba(10, 14, 25, 0.9)), url('back.png');
+            background-size: cover;
+            background-position: center;
+            height: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 14, 25, 0.5);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #b0b0b0;
+            margin-bottom: 20px;
+        }
+
+        /* Use Cases Section */
+        .use-cases {
+            padding: 80px 0;
+        }
+
+        .use-cases-intro {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 60px;
+        }
+
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .use-case-card {
+            background-color: rgba(20, 30, 50, 0.6);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 30px;
+        }
+
+        .use-case-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .use-case-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .use-case-card p {
+            color: #b0b0b0;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .use-case-tag {
+            display: inline-block;
+            color: #4d9cff;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .details-btn {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            padding: 8px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+        }
+
+        .details-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(10, 14, 25, 0.8);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .footer-links h4 {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+
+        .copyright {
+            text-align: left;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #707070;
+            font-size: 14px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+            padding: 80px 0;
+            background: radial-gradient(circle at center, rgba(30, 40, 80, 0.4) 0%, rgba(10, 14, 25, 0.8) 70%);
+        }
+
+        .contact-section h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .contact-section p {
+            color: #b0b0b0;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .use-cases-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="container">
+        <nav>
+            <a href="#" class="logo">QUANT</a>
+            <ul class="nav-links">
+                    <li><a href="{{ url_for('index')}}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+                    <li><a href="{{ url_for('products') }}">Product</a></li>
+                    <li><a href="{{ url_for('usecase') }}" class="active">Use Cases</a></li>
+                    <li><a href="{{ url_for('partners') }}">Partners</a></li>
+                    <li><a href="{{ url_for('news') }}">News</a></li>
+                    <li><a href="{{ url_for('service') }}">Services</a></li>
+                    <li><a href="{{ url_for('chat') }}">ChatRoom</a></li>
+                    <li><a href="{{ url_for('meeting_request') }}">MeetHub</a></li>
+                    <li><a href="{{ url_for('admin_login') }}">Admin</a></li>
+            </ul>
+            <button class="contact-btn">Contact us</button>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p>Reinvent your organization</p>
+            <h1>Use Cases</h1>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="use-cases">
+        <div class="container">
+            <div class="use-cases-intro">
+                <p>At Quant, our solutions have transformed the operations of leading companies across various industries. Our innovative AI-driven products have enabled these organizations to streamline processes, enhance customer experiences, and achieve remarkable results. Below are some of the standout examples of how our technology is making a difference.</p>
+            </div>
+
+            <div class="use-cases-grid">
+                <!-- Use Case 1 -->
+                <div class="use-case-card">
+                    <span class="use-case-tag">Case Study</span>
+                    <h3>Leading Global Airline Digital Employee</h3>
+                    <p>A major global airline was facing challenges in managing the high volume of customer inquiries, particularly during peak travel seasons. The airline needed a solution that could efficiently handle a diverse range of customer queries, from flight bookings and cancellations to loyalty program inquiries.</p>
+                    <button class="details-btn">See Details</button>
+                </div>
+
+                <!-- Use Case 2 -->
+                <div class="use-case-card">
+                    <span class="use-case-tag">Case Study</span>
+                    <h3>World's Largest Utility's Digital Employee</h3>
+                    <p>One of the world's largest utility companies was planning to transform its customer care center, especially during peak load of outages and emergencies. The company needed a reliable solution that could provide real-time updates to millions of customers, address their concerns, and reduce the load on human agents.</p>
+                    <button class="details-btn">See Details</button>
+                </div>
+
+                <!-- Use Case 3 -->
+                <div class="use-case-card">
+                    <span class="use-case-tag">Case Study</span>
+                    <h3>Global Telco Trade Alliance</h3>
+                    <p>A leading global telecommunications alliance, representing several of the largest telco providers worldwide, was seeking to enhance collaboration among its members and significantly improve the experience of its members attending its conferences.</p>
+                    <button class="details-btn">See Details</button>
+                </div>
+
+                <!-- Additional Use Cases -->
+                <div class="use-case-card">
+                    <span class="use-case-tag">Case Study</span>
+                    <h3>Retail Digital Transformation</h3>
+                    <p>A multinational retail chain implemented our AI-powered inventory management system to optimize stock levels across 500+ stores, resulting in a 15% reduction in overstock and a 30% decrease in out-of-stock situations.</p>
+                    <button class="details-btn">See Details</button>
+                </div>
+
+                <div class="use-case-card">
+                    <span class="use-case-tag">Case Study</span>
+                    <h3>Healthcare Process Automation</h3>
+                    <p>A leading hospital network utilized our process automation platform to streamline patient intake procedures, reducing wait times by 40% and improving patient satisfaction scores by 25%.</p>
+                    <button class="details-btn">See Details</button>
+                </div>
+
+                <div class="use-case-card">
+                    <span class="use-case-tag">Case Study</span>
+                    <h3>Financial Services Risk Management</h3>
+                    <p>A global financial institution implemented our AI risk assessment tools to identify potential fraud patterns, resulting in a 65% increase in detection rates and saving the company an estimated $12M annually in fraud prevention.</p>
+                    <button class="details-btn">See Details</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h2>Contact</h2>
+            <p>Let's start a conversation</p>
+            <button class="contact-btn">Contact</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <span class="footer-logo">QUANT</span>
+                    <p class="copyright">©Quant. All rights reserved.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Verticals</a></li>
+                        <li><a href="#">Horizontals</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="privacy.html">Privacy</a></li>
+                        <li><a href="legal.html">Legal</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

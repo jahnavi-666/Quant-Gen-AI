@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUANT - Products</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --dark-bg: #06071b;
+            --darker-bg: #030415;
+            --text-color: #ffffff;
+            --subtle-text: rgba(255, 255, 255, 0.7);
+            --accent-blue: #3b82f6;
+            --button-bg: rgba(255, 255, 255, 0.1);
+            --button-hover: rgba(255, 255, 255, 0.2);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        header {
+            padding: 1.5rem 0;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        nav a:hover {
+            opacity: 0.8;
+        }
+        
+        .contact-btn {
+            background-color: var(--button-bg);
+            color: var(--text-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            border: none;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        
+        .contact-btn:hover {
+            background-color: var(--button-hover);
+        }
+        
+        /* Hero Section */
+        .page-hero {
+            position: relative;
+            padding: 4rem 0;
+            text-align: center;
+            overflow: hidden;
+            background-color: var(--darker-bg);
+        }
+        
+        .light-rays {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.1) 0%, rgba(6, 7, 27, 0) 70%);
+            z-index: 0;
+            animation: pulse 20s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1.2) rotate(0deg);
+            }
+            100% {
+                transform: scale(1.3) rotate(2deg);
+            }
+        }
+        
+        /* Updated animation styles */
+        .max-w-6xl {
+            max-width: 72rem;
+        }
+        
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .px-4 {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        .sm\:px-6 {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        
+        .pt-32 {
+            padding-top: 8rem;
+        }
+        
+        .md\:pt-40 {
+            padding-top: 10rem;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .pb-12 {
+            padding-bottom: 3rem;
+        }
+        
+        .md\:pb-12 {
+            padding-bottom: 3rem;
+        }
+        
+        .inline-flex {
+            display: inline-flex;
+            font-size: 2.8rem; /* Increase size */
+            font-weight: bold; /* Increase weight */
+        }
+        
+        .font-bold {
+            font-weight: 700;
+        }
+        
+        .bg-clip-text {
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+        
+        .text-slate-200 {
+            --tw-text-opacity: 1;
+            color: rgba(226, 232, 240, var(--tw-text-opacity));
+        }
+        
+        .pb-3 {
+            padding-bottom: 0.75rem;
+        }
+        
+        .h2 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        .bg-gradient-to-r {
+            background-image: linear-gradient(to right, var(--tw-gradient-stops));
+        }
+        
+        .from-slate-200\/60 {
+            --tw-gradient-from: rgba(226, 232, 240, 0.6);
+            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(226, 232, 240, 0));
+        }
+        
+        .via-slate-200 {
+            --tw-gradient-stops: var(--tw-gradient-from), #e2e8f0, var(--tw-gradient-to, rgba(226, 232, 240, 0));
+        }
+        
+        .to-slate-200\/60 {
+            --tw-gradient-to: rgba(226, 232, 240, 0.6);
+        }
+        
+        .text-transparent {
+            color: transparent;
+        }
+        
+        .content {
+            position: relative;
+        }
+        
+        .content__container {
+            font-weight: 600;
+            overflow: hidden;
+            height: 40px;
+            padding: 0 10px;
+            display: inline-flex;
+            align-items: flex-start;
+        }
+        
+        .content_container_text {
+            display: inline-block;
+            margin: 0;
+            vertical-align: top;
+            font-size: 2.1rem; /* Increase size */
+            font-weight: bold; /* Increase weight */
+            color: #ffffff; /* Ensure it's visible */   
+        }
+        
+        .content_container_list {
+            margin-top: 0;
+            padding-left: 110px;
+            text-align: left;
+            list-style: none;
+            animation: slide 8s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+        }
+        
+        .content_containerlist_item {
+            line-height: 40px;
+            margin: 0;
+            color: var(--accent-blue);
+        }
+        
+        @keyframes slide {
+            0% { margin-top: 0; }
+            25% { margin-top: 0; }
+            35% { margin-top: -40px; }
+            50% { margin-top: -40px; }
+            60% { margin-top: -80px; }
+            75% { margin-top: -80px; }
+            85% { margin-top: -120px; }
+            100% { margin-top: -120px; }
+        }
+        
+        /* Industry Solutions Grid */
+        .industry-solutions-section {
+            padding: 6rem 0;
+            background-color: var(--dark-bg);
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--subtle-text);
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+        
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .solution-card {
+            position: relative;
+            background-color: var(--darker-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            height: 240px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            transition: transform 0.3s;
+        }
+        
+        .solution-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .solution-overlay {
+            background: linear-gradient(to top, rgba(3, 4, 21, 0.9), rgba(3, 4, 21, 0.1));
+            padding: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .solution-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .solution-desc {
+            font-size: 0.9rem;
+            color: var(--subtle-text);
+        }
+        
+        .solution-tag {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+        
+        /* Background colors for cards */
+        .solution-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.6;
+            z-index: 1;
+        }
+        
+        .bg-gov { background-color: #0c4a6e; }
+        .bg-healthcare { background-color: #1e3a8a; }
+        .bg-provider { background-color: #065f46; }
+        .bg-hospitality { background-color: #92400e; }
+        .bg-insurance { background-color: #581c87; }
+        .bg-postal { background-color: #7f1d1d; }
+        .bg-property { background-color: #1e3a8a; }
+        .bg-retail { background-color: #4c1d95; }
+        .bg-banking { background-color: #0e7490; }
+        .bg-telecom { background-color: #0369a1; }
+        .bg-trade { background-color: #b45309; }
+        .bg-utility { background-color: #0f766e; }
+        
+        /* Offerings Section */
+        .offerings-section {
+            padding: 6rem 0;
+            background-color: var(--darker-bg);
+        }
+        
+        .offerings-container {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .offerings-content {
+            flex: 1;
+        }
+        
+        .offerings-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .offerings-image img {
+            max-width: 100%;
+            border-radius: 16px;
+        }
+        
+        .offering-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .offering-icon {
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .offering-title {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .offering-desc {
+            font-size: 0.9rem;
+            color: var(--subtle-text);
+        }
+        
+        /* Integration Section */
+        .integration-section {
+            padding: 8rem 0;
+            text-align: center;
+            background-color: var(--dark-bg);
+        }
+        
+        .integration-title {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .integration-subtitle {
+            font-size: 1.1rem;
+            color: var(--subtle-text);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--darker-bg);
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .footer-logo {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-copyright {
+            font-size: 0.9rem;
+            color: var(--subtle-text);
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 4rem;
+        }
+        
+        .footer-column h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column a {
+            color: var(--subtle-text);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--text-color);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .solutions-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .offerings-container {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .solutions-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+                gap: 3rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .integration-title {
+                font-size: 2.2rem;
+            }
+            
+            .content_container_list {
+                padding-left: 90px;
+            }
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <div class="container header-container">
+            <div class="logo">QUANT</div>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index')}}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+                    <li><a href="{{ url_for('products') }}" class="active">Product</a></li>
+                    <li><a href="{{ url_for('usecase') }}">Use Cases</a></li>
+                    <li><a href="{{ url_for('partners') }}">Partners</a></li>
+                    <li><a href="{{ url_for('news') }}">News</a></li>
+                    <li><a href="{{ url_for('service') }}">Services</a></li>
+                    <li><a href="{{ url_for('chat') }}">ChatRoom</a></li>
+                    <li><a href="{{ url_for('meeting_request') }}">MeetHub</a></li>
+                    <li><a href="{{ url_for('admin_login') }}">Admin</a></li>
+                </ul>
+            </nav>
+            <button class="contact-btn">Contact us</button>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="light-rays"></div>
+        <div class="container">
+            <!-- Updated hero section with list animation -->
+            <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                <div class="pt-32 md:pt-40">
+                    <div class="text-center pb-12 md:pb-12">
+                        <div class="inline-flex font-bold bg-clip-text text-slate-200 pb-3">Hire a superintelligent Quant,</div>
+                        <h2 class="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60">
+                            <div class="content">
+                                <div class="content__container">
+                                    <p class="content_container_text">who is proficient in </p>
+                                    <ul class="content_container_list">
+                                        <li class="content_containerlist_item">ITSD</li>
+                                        <li class="content_containerlist_item">Healthcare</li>
+                                        <li class="content_containerlist_item">Banking</li>
+                                        <li class="content_containerlist_item">Telco</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <p class="page-subtitle">Quant is at the forefront of AI-driven innovation, offering a suite of advanced digital solutions designed to enhance customer service and deliver superior results to stakeholders.</p>
+        </div>
+    </section>
+
+    <section class="industry-solutions-section">
+        <div class="container">
+            <h2 class="section-title">Industry Solutions</h2>
+            <p class="section-subtitle">Specialized AI solutions tailored for specific industries</p>
+            
+            <div class="solutions-grid">
+                <div class="solution-card">
+                    <div class="solution-bg bg-gov"></div><img src="static/images/gvt.png" >
+                    <div class="solution-overlay">
+                        <h3 class="solution-title">Government Services</h3>
+                        <p class="solution-desc">Empowering Exceptional Government Citizen Support</p>
+                        <div class="solution-tag">Quant Agent</div>
+                    </div>
+                </div>
+                
+                <div class="solution-card">
+                    <div class="solution-bg bg-healthcare"></div><img src="static/images/hlthcare.png" >
+                    <div class="solution-overlay">
+                        <h3 class="solution-title">Healthcare Payor</h3>
+                        <p class="solution-desc">Empowering Exceptional Healthcare Insurance Customer Support</p>
+                        <div class="solution-tag">Quant Agent</div>
+                    </div>
+                </div>
+                
+                <div class="solution-card">
+                    <div class="solution-bg bg-provider"></div><img src="static/images/hlthprovider.png" >
+                    <div class="solution-overlay">
+                        <h3 class="solution-title">Healthcare Provider</h3>
+                        <p class="solution-desc">Empowering Exceptional Healthcare Provider Support</p>
+                        <div class="solution-tag">Quant Agent</div>
+                    </div>
+                </div>
+                
+                <div class="solution-card">
+                    <div class="solution-bg bg-hospitality"></div><img src="static/images/hosptlty.png" >
+                    <div class="solution-overlay">
+                        <h3 class="solution-title">Hospitality</h3>
+                        <p class="solution-desc">Empowering Exceptional Hospitality Experiences</p>
+                        <div class="solution-tag">Quant Agent</div>
+                    </div>
+                </div>
+                
+                <div class="solution-card">
+                    <div class="solution-bg bg-insurance"></div><img src="static/images/life.png" >
+                    <div class="solution-overlay">
+                        <h3 class="solution-title">Life Insurance</h3>
+                        <p class="solution-desc">Revolutionizing Life Insurance Customer Service</p>
+                        <div class="solution-tag">Quant Agent</div>
+                    </div>
+                </div>
+                
+                <div class="solution-card">
+                    <div class="solution-bg bg-postal"></div><img src="static/images/postal.png" >
+                    <div class="solution-overlay">
+                        <h5 class="solution-title">Postal Service</h5>
+                        <p class="solution-desc">Empowering Exceptional Postal Service Experience</p>
+                        <div class="solution-tag">Quant Agent</div>
+                    </div>
+                </div>
+                
+                <div class="solution-card">
+                    <div class="solution-bg bg-property"></div><img src="static/images/property.png" >
+                    <div class="solution-overlay">
+                        <h3 class="solution-title">Property & Casualty Insurance</h3>
+                        <p class="solution-desc">Revolutionizing Insurance Customer Service</p>
+                        <div class="solution-tag">Quant Agent</div>
+                    </div>
+                </div>
+                
+                <div class="solution-card">
+                    <div class="solution-bg bg-retail"></div><img src="static/images/retail.png" >
+                    <div class="solution-overlay">
+                        <h3 class="solution-title">Retail</h3>
+                        <p class="solution-desc">Empowering Exceptional Retail Customer Support</p>
+                        <div class="solution-tag">Quant Agent</div>
+                    </div>
+                </div>
+                
+                <div class="solution-card">
+                    <div class="solution-bg bg-banking"></div><img src="static/images/retail bankin.png" >
+                    <div class="solution-overlay">
+                        <h3 class="solution-title">Retail Banking</h3>
+                        <p class="solution-desc">Welcome to the Future of Retail Banking Customer Service</p>
+                        <div class="solution-tag">Quant Agent</div>
+                    </div>
+                </div>
+                
+                <div class="solution-card">
+                    <div class="solution-bg bg-telecom"></div><img src="static/images/telecominication.png" >
+                    <div class="solution-overlay">
+                        <h3 class="solution-title">Telecommunications</h3>
+                        <p class="solution-desc">Empowering Exceptional Telecom Customer Support</p>
+                        <div class="solution-tag">Quant Agent</div>
+                    </div>
+                </div>
+                
+                <div class="solution-card">
+                    <div class="solution-bg bg-trade"></div><img src="static/images/trade.png" >
+                    <div class="solution-overlay">
+                        <h3 class="solution-title">Trade Associations</h3>
+                        <p class="solution-desc">Empowering Exceptional Trade Association Member Support</p>
+                        <div class="solution-tag">Quant Agent</div>
+                    </div>
+                </div>
+                
+                <div class="solution-card">
+                    <div class="solution-bg bg-utility"></div><img src="static/images/utility.png" >
+                    <div class="solution-overlay">
+                        <h3 class="solution-title">Utility Industry</h3>
+                        <p class="solution-desc">Powering Exceptional Utility Customer Service</p>
+                        <div class="solution-tag">Quant Agent</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="offerings-section">
+        <div class="container">
+            <h2 class="section-title">Quant offerings include:</h2>
+            <div class="offerings-container">
+                <div class="offerings-content">
+                    <div class="offering-item">
+                        <div class="offering-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="offering-title">Intelligent Digital Employee</h3>
+                            <p class="offering-desc">A versatile AI-powered agent that handles customer interactions with a deep understanding of industry-specific nuances, providing efficient and personalized service.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="offering-item">
+                        <div class="offering-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="offering-title">Contact Center as a Service</h3>
+                            <p class="offering-desc">A comprehensive, cloud-based contact center solution that leverages AI to manage customer interactions seamlessly across multiple channels, improving both response times and customer satisfaction.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="offering-item">
+                        <div class="offering-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="offering-title">Decision AI Expert</h3>
+                            <p class="offering-desc">A powerful AI tool designed to assist in complex decision-making processes by analyzing vast amounts of data and providing actionable insights, helping organizations to make informed, strategic decisions.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="offerings-image">
+                    <img src="/api/placeholder/600/600" alt="Quant Representative">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="integration-section">
+        <div class="container">
+            <p class="section-subtitle">Supercharge your customer operations</p>
+            <h2 class="integration-title">Integrate AI at the core of your organization</h2>
+            <p class="integration-subtitle">Our core offering is a quantitative digital expert that seamlessly integrates into your organization, providing unparalleled support across various functions. Whether it's customer service, IT management, or decision-making, Quant's solutions empower your teams to deliver exceptional outcomes, consistently.</p>
+            <button class="contact-btn">Contact</button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-info">
+                <div class="footer-logo">QUANT</div>
+                <p class="footer-copyright">©Quant. All rights reserved.</p>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Verticals</a></li>
+                        <li><a href="#">Horizontals</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">News</a></li>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Legal</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            const nav = document.querySelector('nav ul');
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Animated light rays effect
+        const heroSection = document.querySelector('.page-hero');
+        const lightRays = document.querySelector('.light-rays');
+
+        if (heroSection && lightRays) {
+            heroSection.addEventListener('mousemove', (e) => {
+                const x = e.clientX / window.innerWidth;
+                const y = e.clientY / window.innerHeight;
+                
+                //lightRays.style.transform = scale(1.2) translate (${x * 30 - 15},px, ${y * 30 - 15}px);
+                lightRays.style.transform = `scale(1.2) translate(${x * 30 - 15}px, ${y * 30 - 15}px)`;
+            });
+        }
+    </script>
+</body>
+</html>
