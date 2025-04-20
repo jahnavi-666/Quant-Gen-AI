@@ -6,7 +6,7 @@ from flask_mail import Mail, Message
 from flask import Flask, request, jsonify, render_template, redirect, url_for, session
 from flask import Flask, render_template
 from flask_socketio import SocketIO, send, emit
-app = Flask(__name__)
+app = Flask(__name__) 
 
 # Your Hugging Face API Key
 HUGGINGFACE_API_KEY = "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"
