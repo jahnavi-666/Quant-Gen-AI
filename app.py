@@ -84,8 +84,8 @@ def handleJoin(username):
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'liamgjp81@gmail.com'   # Your Gmail
-app.config['MAIL_PASSWORD'] = 'vestryKinnu@13072009'    # Your Gmail password or app password
+app.config['MAIL_USERNAME'] = 'abcd@gmail.com'   # Your Gmail
+app.config['MAIL_PASSWORD'] = 'abcd'    # Your Gmail password or app password
 mail = Mail(app)
 
 app.secret_key = 'c20d2020bf6c2cb12dc5d2470df69151'  # Needed for session management
