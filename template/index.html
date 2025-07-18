@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUANT - Hire Super-intelligence</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --dark-bg: #06071b;
+            --darker-bg: #030415;
+            --text-color: #ffffff;
+            --subtle-text: rgba(255, 255, 255, 0.7);
+            --accent-blue: #3b82f6;
+            --button-bg: rgba(255, 255, 255, 0.1);
+            --button-hover: rgba(255, 255, 255, 0.2);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        header {
+            padding: 1.5rem 0;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        nav a:hover {
+            opacity: 0.8;
+        }
+        
+        .contact-btn {
+            background-color: var(--button-bg);
+            color: var(--text-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            border: none;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        
+        .contact-btn:hover {
+            background-color: var(--button-hover);
+        }
+        
+        .hero {
+            position: relative;
+            padding: 6rem 0;
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(6, 7, 27, 0) 0%, var(--dark-bg) 70%);
+            z-index: 1;
+        }
+        
+        .light-rays {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900"><defs><linearGradient id="a" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%23FF3CAC"/><stop offset="50%" stop-color="%23784BA0"/><stop offset="100%" stop-color="%232B86C5"/></linearGradient></defs><rect width="1600" height="900" fill="%2306071b"/><g fill-opacity="0.5"><polygon fill="url(%23a)" points="957 450 539 900 1396 900"/><polygon fill="url(%23a)" points="957 450 872.9 900 1396 900"/><polygon fill="url(%23a)" points="-60 900 398 662 816 900"/><polygon fill="url(%23a)" points="337 900 398 662 816 900"/><polygon fill="url(%23a)" points="1203 546 1552 900 876 900"/><polygon fill="url(%23a)" points="1203 546 1552 900 1162 900"/><polygon fill="url(%23a)" points="641 695 886 900 367 900"/><polygon fill="url(%23a)" points="587 900 641 695 886 900"/><polygon fill="url(%23a)" points="1710 900 1401 632 1096 900"/><polygon fill="url(%23a)" points="1710 900 1401 632 1365 900"/><polygon fill="url(%23a)" points="1210 900 971 687 725 900"/><polygon fill="url(%23a)" points="943 900 1210 900 971 687"/></g></svg>');
+            background-size: cover;
+            opacity: 0.8;
+            z-index: 0;
+            transform: scale(1.2);
+            animation: pulse 20s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1.2) rotate(0deg);
+            }
+            100% {
+                transform: scale(1.3) rotate(2deg);
+            }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-tag {
+            color: var(--subtle-text);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--subtle-text);
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .features {
+            padding: 5rem 0;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .feature-number {
+            background-color: var(--button-bg);
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        
+        .feature-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-content p {
+            color: var(--subtle-text);
+            font-size: 0.95rem;
+        }
+        
+        .intro-section {
+            padding: 6rem 0;
+            background-color: var(--darker-bg);
+            position: relative;
+        }
+        
+        .intro-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .intro-content h2 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+        
+        .intro-content p {
+            color: var(--subtle-text);
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-list {
+            margin-top: 2rem;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            background-color: rgba(59, 130, 246, 0.1);
+            padding: 0.75rem;
+            border-radius: 6px;
+        }
+        
+        .feature-icon {
+            background-color: #1e3a8a;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .feature-desc {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .assistant-img {
+            position: relative;
+        }
+        
+        .assistant {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .chat-bubble {
+            position: absolute;
+            background-color: #2563eb;
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 18px;
+            font-size: 0.9rem;
+            max-width: 200px;
+        }
+        
+        .bubble-1 {
+            bottom: 30%;
+            right: 0;
+            border-bottom-right-radius: 0;
+        }
+        
+        .bubble-2 {
+            bottom: 15%;
+            right: 15%;
+            border-bottom-right-radius: 0;
+        }
+        
+        .quote-section {
+            padding: 6rem 0;
+            text-align: center;
+        }
+        
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 600;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .quote-description {
+            color: var(--subtle-text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .carousel-section {
+            padding: 3rem 0;
+            overflow: hidden;
+        }
+        
+        .carousel {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            padding: 2rem 0;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+        }
+        
+        .carousel::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .carousel-item {
+            flex: 0 0 300px;
+            height: 180px;
+            background-color: #1e293b;
+            border-radius: 8px;
+            scroll-snap-align: start;
+        }
+        
+        /* Make site responsive */
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .intro-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .assistant-img {
+                order: -1;
+                margin-bottom: 2rem;
+                display: flex;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+        
+        /* Mobile menu button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">QUANT</div>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index')}}" class="active">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+                    <li><a href="{{ url_for('products') }}">Product</a></li>
+                    <li><a href="{{ url_for('usecase') }}">Use Cases</a></li>
+                    <li><a href="{{ url_for('partners') }}">Partners</a></li>
+                    <li><a href="{{ url_for('news') }}">News</a></li>
+                    <li><a href="{{ url_for('meeting_request') }}">MeetHub</a></li>
+                    <li><a href="{{ url_for('admin_login') }}">Admin</a></li>
+                </ul>
+            </nav>
+            <button class="contact-btn">Contact us</button>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="light-rays"></div>
+        <div class="container hero-content">
+            <p class="hero-tag">Transform your business with a Quant Agent</p>
+            <h1>Hire Super-intelligence</h1>
+            <p>Hire a Quant to revolutionize your customer interactions. A Quant delivers game-changing insights to optimize your operations and elevate customer satisfaction.</p>
+            <button class="contact-btn">Contact us</button>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container features-grid">
+            <div class="feature-box">
+                <div class="feature-number">1</div>
+                <div class="feature-content">
+                    <h3>Hire Quant.</h3>
+                    <p>Hire Quant, whose focus is your customer centricity</p>
+                </div>
+            </div>
+            <div class="feature-box">
+                <div class="feature-number">2</div>
+                <div class="feature-content">
+                    <h3>Mine your data</h3>
+                    <p>Mine embedded intelligence in customer conversations to drive better outcomes</p>
+                </div>
+            </div>
+            <div class="feature-box">
+                <div class="feature-number">3</div>
+                <div class="feature-content">
+                    <h3>Analyze interactions</h3>
+                    <p>Get telemetry into what your customer's expect as you handle their issues into their satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="intro-section">
+        <div class="container intro-container">
+            <div class="intro-content">
+                <p>Introducing Quant</p>
+                <h2>Human-like cognition and comprehension</h2>
+                <p>Reinforced learning with human feedback, inductive, deductive, generative and empirical learning makes Quant resilient.</p>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 8v4l3 3"></path>
+                            </svg>
+                        </div>
+                        <div class="feature-desc">LLM Agents: Supercharged integration with various models</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                            </svg>
+                        </div>
+                        <div class="feature-desc">Zero-shot and few-shot inference</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                        </div>
+                        <div class="feature-desc">Multilingual and multilingual conversational</div>
+                    </div>
+                </div>
+            </div>
+            <div class="assistant-img">
+                <img src="girl.jpg" alt="AI Assistant" class="assistant" />
+              
+            </div>
+        </div>
+    </section>
+
+    <section class="quote-section">
+        <div class="container">
+            <h2 class="quote-text">Quant understands your users.</h2>
+            <p class="quote-description">Harness cutting-edge intelligence from every customer conversation to drive exceptional results. Uncover powerful telemetry and discover the key drivers of customer expectations.</p>
+        </div>
+    </section>
+
+    <section class="carousel-section">
+        <div class="container">
+            <div class="carousel">
+                <div class="carousel-item"></div>
+                <div class="carousel-item"></div>
+                <div class="carousel-item"></div>
+                <div class="carousel-item"></div>
+                <div class="carousel-item"></div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            const nav = document.querySelector('nav ul');
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Animated light rays effect
+        const heroSection = document.querySelector('.hero');
+        const lightRays = document.querySelector('.light-rays');
+
+        heroSection.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            lightRays.style.transform = `scale(1.2) translate(${x * 30 - 15}px, ${y * 30 - 15}px)`;
+        });
+
+        // Auto-scrolling carousel animation
+        const carousel = document.querySelector('.carousel');
+        let scrollPosition = 0;
+        const scrollAmount = 1;
+        const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+
+        function autoScroll() {
+            scrollPosition += scrollAmount;
+            
+            if (scrollPosition >= maxScroll) {
+                scrollPosition = 0;
+            }
+            
+            carousel.scrollTo(scrollPosition, 0);
+            requestAnimationFrame(autoScroll);
+        }
+
+        setTimeout(() => {
+            requestAnimationFrame(autoScroll);
+        }, 3000);
+    </script>
+<section class="pricing-section">
+    <div class="light-rays"></div>
+    <div class="container">
+        <h2 class="section-title">Pricing Plans</h2>
+        <p class="section-subtitle">Choose the right Quant solution for your business needs</p>
+        
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>Starter</h3>
+                    <div class="price">$499<span>/month</span></div>
+                </div>
+                <div class="pricing-features">
+                    <div class="feature-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>1 Quant Agent</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>Basic analytics</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>Standard integrations</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>Email support</span>
+                    </div>
+                </div>
+                <button class="pricing-btn">Get Started</button>
+            </div>
+            
+            <div class="pricing-card featured">
+                <div class="pricing-badge">Most Popular</div>
+                <div class="pricing-header">
+                    <h3>Professional</h3>
+                    <div class="price">$1,299<span>/month</span></div>
+                </div>
+                <div class="pricing-features">
+                    <div class="feature-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>3 Quant Agents</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>Advanced analytics</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>Custom integrations</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>Priority support</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>API Access</span>
+                    </div>
+                </div>
+                <button class="pricing-btn">Get Started</button>
+            </div>
+            
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>Enterprise</h3>
+                    <div class="price">Custom</div>
+                </div>
+                <div class="pricing-features">
+                    <div class="feature-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>Unlimited Quant Agents</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>Full-scale analytics</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>Enterprise integrations</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>24/7 dedicated support</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>Custom development</span>
+                    </div>
+                </div>
+                <button class="pricing-btn">Contact Sales</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="use-cases">
+    <div class="container">
+        <h2 class="section-title">Use Cases</h2>
+        <p class="section-subtitle">See how Quant is transforming businesses across industries</p>
+        
+        <div class="cases-grid">
+            <div class="case-card">
+                <div class="case-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+                <h3>Customer Service</h3>
+                <p>Transform your customer service operations with Quant's intelligent agents that understand context and deliver personalized solutions.</p>
+                <a href="#" class="case-link">Learn more →</a>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                    </svg>
+                </div>
+                <h3>Predictive Analytics</h3>
+                <p>Leverage advanced ML algorithms to predict customer behavior and market trends with unprecedented accuracy.</p>
+                <a href="#" class="case-link">Learn more →</a>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                    </svg>
+                </div>
+                <h3>Process Automation</h3>
+                <p>Automate complex business processes with intelligent workflows that adapt and learn from each interaction.</p>
+                <a href="#" class="case-link">Learn more →</a>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                </div>
+                <h3>Knowledge Management</h3>
+                <p>Unlock the value of your organization's data with Quant's intelligent knowledge discovery and management.</p>
+                <a href="#" class="case-link">Learn more →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="testimonials-section">
+    <div class="light-rays"></div>
+    <div class="container">
+        <h2 class="section-title">What Our Clients Say</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-rating">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+                <p class="testimonial-text">"Implementing Quant has transformed how we interact with our customers. The insights generated have led to a 45% increase in customer satisfaction."</p>
+                <div class="testimonial-author">
+                    <img src="/api/placeholder/50/50" alt="Client" class="author-img">
+                    <div class="author-info">
+                        <h4>Sarah Johnson</h4>
+                        <p>CTO, TechGlobal Inc.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-rating">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+                <p class="testimonial-text">"The ROI we've seen from Quant has been incredible. Within 3 months, we've reduced operational costs by 30% while improving service quality."</p>
+                <div class="testimonial-author">
+                    <img src="/api/placeholder/50/50" alt="Client" class="author-img">
+                    <div class="author-info">
+                        <h4>Michael Chen</h4>
+                        <p>COO, Innovate Solutions</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-rating">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+                <p class="testimonial-text">"Quant's ability to understand complex customer queries and provide accurate solutions has revolutionized our support department."</p>
+                <div class="testimonial-author">
+                    <img src="/api/placeholder/50/50" alt="Client" class="author-img">
+                    <div class="author-info">
+                        <h4>Elena Rodriguez</h4>
+                        <p>Customer Experience Director, Global Retail</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Additional styles for new sections */
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--subtle-text);
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+}
+
+/* Pricing Section */
+.pricing-section {
+    padding: 6rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.pricing-card {
+    background-color: var(--darker-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.pricing-card.featured {
+    border: 1px solid var(--accent-blue);
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
+}
+
+.pricing-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--accent-blue);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.pricing-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.pricing-header h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.price {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.price span {
+    font-size: 1rem;
+    font-weight: normal;
+    opacity: 0.7;
+}
+
+.pricing-features {
+    margin-bottom: 2rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    color: var(--subtle-text);
+}
+
+.feature-item svg {
+    color: var(--accent-blue);
+}
+
+.pricing-btn {
+    background-color: var(--button-bg);
+    color: var(--text-color);
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 8px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.pricing-btn:hover {
+    background-color: var(--button-hover);
+}
+
+.featured .pricing-btn {
+    background-color: var(--accent-blue);
+}
+
+.featured .pricing-btn:hover {
+    background-color: #2563eb;
+}
+
+/* Use Cases Section */
+.use-cases {
+    padding: 6rem 0;
+    background-color: var(--darker-bg);
+}
+
+.cases-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.case-card {
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    transition: transform 0.3s;
+}
+
+.case-card:hover {
+    transform: translateY(-5px);
+}
+
+.case-icon {
+    background-color: rgba(59, 130, 246, 0.2);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.case-icon svg {
+    color: var(--accent-blue);
+}
+
+.case-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.case-card p {
+    color: var(--subtle-text);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.case-link {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+/* Testimonials Section */
+.testimonials-section {
+    padding: 6rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.testimonial-card {
+    background-color: var(--darker-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.testimonial-rating {
+    color: #fbbf24;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.testimonial-text {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.author-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.author-info h4 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.author-info p {
+    color: var(--subtle-text);
+    font-size: 0.8rem;
+}
+
+/* Responsive styles for new sections */
+@media (max-width: 1024px) {
+    .pricing-grid,
+    .cases-grid,
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .pricing-grid,
+    .cases-grid,
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+}
+</style>
+</body>
+</html>

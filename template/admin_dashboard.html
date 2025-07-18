@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f0f2f5;
+            margin: 0;
+            padding: 30px;
+        }
+        h2 {
+            text-align: center;
+            color: #191553;
+        }
+        .request-card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+        .actions {
+            margin-top: 15px;
+        }
+        .actions button, .actions input[type="text"] {
+            margin-right: 10px;
+            margin-top: 5px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: none;
+            font-size: 14px;
+        }
+        .accept-btn {
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+        .reject-btn {
+            background-color: #dc3545;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="text"] {
+            width: 50%;
+            border: 1px solid #ccc;
+        }
+        .logout {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .logout a {
+            text-decoration: none;
+            color: #191553;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Meeting Requests</h2>
+
+{% if requests %}
+    {% for request in requests %}
+        <div class="request-card">
+            <strong>Name:</strong> {{ request.name }} <br>
+            <strong>Email:</strong> {{ request.email }} <br>
+            <strong>Description:</strong> {{ request.description }}
+            
+            <form class="actions" method="POST" action="/handle_request">
+                <input type="hidden" name="email" value="{{ request.email }}">
+                <input type="hidden" name="name" value="{{ request.name }}">
+                <input type="hidden" name="description" value="{{ request.description }}">
+                
+                <input type="text" name="meeting_link" placeholder="Enter meeting link (for accept)">
+                
+                <button type="submit" name="action" value="accept" class="accept-btn">Accept</button>
+                <button type="submit" name="action" value="reject" class="reject-btn">Reject</button>
+            </form>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No meeting requests yet.</p>
+{% endif %}
+
+<div class="logout">
+    <a href="{{ url_for('logout') }}">Logout</a>
+</div>
+
+</body>
+</html>
