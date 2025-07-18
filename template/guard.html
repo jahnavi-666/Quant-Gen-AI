@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Content Generator</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+  <style>
+    body {
+      background: linear-gradient(to right, #011738, #7179d8);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding-top: 50px;
+    }
+
+    .content-box {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .btn-custom {
+      background-color: #000000;
+      color: white;
+      border: none;
+    }
+
+    .btn-custom:hover {
+      background-color: #0f0234;
+    }
+
+    #output {
+      white-space: pre-wrap;
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    #downloadBtn {
+      display: none;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="content-box">
+      <h2 class="text-center mb-4">Content Generator</h2>
+
+      <div class="form-group">
+        <label for="topicInput">Enter a Topic:</label>
+        <input type="text" class="form-control" id="topicInput" placeholder="e.g. Quantum Technology">
+      </div>
+
+      <button class="btn btn-custom btn-block mt-3" onclick="generateContent()">Generate Content</button>
+
+      <!-- Output Display -->
+      <div id="output" class="mt-4" style="display:none;"></div>
+
+      <!-- Download Button -->
+      <button id="downloadBtn" class="btn btn-outline-secondary btn-block" onclick="downloadContent()">⬇️ Download Content</button>
+    </div>
+  </div>
+
+  <script>
+    function generateContent() {
+      const topic = document.getElementById('topicInput').value.trim();
+      if (!topic) {
+        alert('Please enter a topic!');
+        return;
+      }
+
+      const outputDiv = document.getElementById('output');
+      const downloadBtn = document.getElementById('downloadBtn');
+
+      outputDiv.style.display = 'block';
+      outputDiv.innerHTML = 'Generating... ⏳';
+      downloadBtn.style.display = 'none';
+
+      fetch('/generate_content', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ topic })
+      })
+      .then(res => res.json())
+      .then(data => {
+        outputDiv.innerHTML = data.generated_text || 'No response.';
+        downloadBtn.style.display = 'block';
+      })
+      .catch(err => {
+        console.error(err);
+        outputDiv.innerHTML = '❌ Error generating content.';
+      });
+    }
+
+    function downloadContent() {
+      const content = document.getElementById('output').innerText;
+      const blob = new Blob([content], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'generated_content.txt';
+      a.click();
+    }
+  </script>
+</body>
+</html>

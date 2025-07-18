@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUANT - Partners</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0a0e19;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #ffffff;
+        }
+
+        .contact-btn {
+            background-color: transparent;
+            border: 1px solid #505050;
+            border-radius: 50px;
+            padding: 8px 24px;
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .contact-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: linear-gradient(rgba(10, 14, 25, 0.5), rgba(10, 14, 25, 0.9)), url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 14, 25, 0.5);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #b0b0b0;
+            margin-bottom: 20px;
+        }
+
+        /* Partners Section */
+        .partners-section {
+            padding: 80px 0;
+        }
+
+        .partners-intro {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 60px;
+        }
+
+        .partner-category {
+            margin-bottom: 60px;
+        }
+
+        .partner-category h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .partner-category-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: #b0b0b0;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .partner-card {
+            background-color: rgba(20, 30, 50, 0.6);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 30px;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .partner-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .partner-card p {
+            color: #b0b0b0;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .icon {
+            display: inline-block;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        /* Become a Partner Section */
+        .become-partner {
+            padding: 80px 0;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(30, 40, 80, 0.4) 0%, rgba(10, 14, 25, 0.8) 70%);
+        }
+
+        .become-partner h2 {
+            font-size: 40px;
+            margin-bottom: 60px;
+        }
+
+        .benefits-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .benefit {
+            text-align: left;
+        }
+
+        .benefit h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .benefit p {
+            color: #b0b0b0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(10, 14, 25, 0.8);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .footer-links h4 {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+
+        .copyright {
+            text-align: left;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #707070;
+            font-size: 14px;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .partners-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .benefits-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="container">
+        <nav>
+            <a href="#" class="logo">QUANT</a>
+            <ul class="nav-links">
+                    <li><a href="{{ url_for('index')}}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+                    <li><a href="{{ url_for('products') }}">Product</a></li>
+                    <li><a href="{{ url_for('usecase') }}">Use Cases</a></li>
+                    <li><a href="{{ url_for('partners') }}" class="active">Partners</a></li>
+                    <li><a href="{{ url_for('news') }}">News</a></li>
+                    <li><a href="{{ url_for('meeting_request') }}">MeetHub</a></li>
+                    <li><a href="{{ url_for('admin_login') }}">Admin</a></li>
+            </ul>
+            <button class="contact-btn">Contact us</button>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Partners</h1>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners-section">
+        <div class="container">
+            <div class="partners-intro">
+                <p>At Quant, we understand that achieving excellence in AI-driven solutions requires a robust ecosystem of partners. Our global network of partners is essential to our success, enabling us to deliver innovative, high-impact solutions that drive meaningful results for our clients across various industries and regions. We are proud to collaborate with a diverse range of technology, reseller, and implementation partners who share our commitment to delivering differentiated outcomes.</p>
+            </div>
+
+            <!-- Technology/Reseller Partners -->
+            <div class="partner-category">
+                <h2>Technology / Reseller Partners</h2>
+                <p class="partner-category-intro">Quant collaborates with a select group of technology and reseller partners who play a critical role in bringing our advanced AI solutions to businesses around the world. These partners are strategically located across three continents—North America, Europe, and Asia-Pacific—ensuring that we can meet the needs of our clients wherever they operate.</p>
+                
+                <div class="partners-grid">
+                    <div class="partner-card">
+                        <span class="icon">⚡</span>
+                        <h3>Technology Partners</h3>
+                        <p>Our technology partners provide the foundational infrastructure and cutting-edge tools that power Quant's AI solutions, ensuring they are robust, scalable, and at the forefront of innovation.</p>
+                    </div>
+
+                    <div class="partner-card">
+                        <span class="icon">⚡</span>
+                        <h3>Resellers Partners</h3>
+                        <p>Our reseller partners, on the other hand, are trusted business agents who understand the unique needs of their local markets. They are experienced in identifying and addressing client requirements, providing valuable insights and connections.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Implementation Partners -->
+            <div class="partner-category">
+                <h2>Implementation Partners</h2>
+                <p class="partner-category-intro">To ensure the seamless deployment and integration of our AI solutions, Quant works closely with a network of specialized implementation partners. These partners bring deep expertise and industry knowledge, allowing us to deliver customized solutions that align perfectly with our clients' needs.</p>
+                
+                <div class="partners-grid">
+                    <div class="partner-card">
+                        <span class="icon">⚡</span>
+                        <h3>System Integrators</h3>
+                        <p>Our system integrator partners are experts in connecting Quant's AI solutions with clients' existing IT infrastructure. They ensure smooth and efficient integration, minimizing disruption and maximizing the value of our solutions. With their help, our clients can seamlessly incorporate AI into their operations, enhancing performance and achieving their business goals.</p>
+                    </div>
+
+                    <div class="partner-card">
+                        <span class="icon">⚡</span>
+                        <h3>Service Providers</h3>
+                        <p>Quant's service provider partners offer essential managed services and ongoing support, ensuring that our AI solutions continue to deliver value over time. These partners help our clients optimize their AI deployments, providing everything from routine maintenance to advanced analytics services that enhance decision-making and operational efficiency.</p>
+                    </div>
+
+                    <div class="partner-card">
+                        <span class="icon">⚡</span>
+                        <h3>OEMs (Original Equipment Manufacturers)</h3>
+                        <p>Our partnerships with OEMs allow us to embed Quant's AI technology directly into hardware and equipment, creating intelligent, automated systems that enhance operational efficiency and customer experiences. These OEM partners help us bring our AI solutions to life in various forms, from smart devices to industrial machinery.</p>
+                    </div>
+
+                    <div class="partner-card">
+                        <span class="icon">⚡</span>
+                        <h3>Partner Affiliates</h3>
+                        <p>Quant's network of partner affiliates includes industry experts, consultants, and niche solution providers who offer specialized knowledge and services. These affiliates contribute to the customization and localization of our AI solutions, ensuring they meet the unique requirements of different industries and markets. Whether it's healthcare, finance, manufacturing, or retail, our partner affiliates help us deliver AI solutions that are precisely tailored to the needs of each sector.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Become a Partner Section -->
+    <section class="become-partner">
+        <div class="container">
+            <h2>Become a Partner</h2>
+            <div class="benefits-container">
+                <div class="benefit">
+                    <h3>Make a Difference</h3>
+                    <p>We invite you to join our growing network of partners and be part of a transformative journey in AI-powered business solutions. At Quant, we believe in the power of collaboration and are always looking for new partners who share our vision of innovation and excellence.</p>
+                </div>
+                <div class="benefit">
+                    <h3>Expand your business</h3>
+                    <p>As a Quant partner, you will have access to our state-of-the-art AI technology, comprehensive training and resources, and a global community of like-minded professionals. Whether you are a technology provider, reseller, system integrator, or consultant, partnering with Quant offers you the opportunity to expand your business, enhance your service offerings, and deliver exceptional value to your clients.</p>
+                </div>
+            </div>
+            <button class="contact-btn">Contact us</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <span class="footer-logo">QUANT</span>
+                    <p class="copyright">©Quant. All rights reserved.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Verticals</a></li>
+                        <li><a href="#">Horizontals</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="privacy.html">Privacy</a></li>
+                        <li><a href="legal.html">Legal</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
