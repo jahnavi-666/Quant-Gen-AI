@@ -48,7 +48,6 @@ In addition, it integrates:
 - Python 3.8+
 - Git
 - Internet connection (for API access)
-- 
 
 # Run the Flask app
 python app.py
